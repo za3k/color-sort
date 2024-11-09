@@ -15,28 +15,38 @@
     </div>
 
     <div class="right-sidebar">
-        <div class="title">Color Sort</div>
+        <div class="title between-games" style="display: none"><span style="color: maroon;">C</span><span style="color: red">o</span><span style="color: orange">l</span><span style="color: lightgreen">o</span><span style="color: green">r</span> <span style="color: lightblue">S</span><span style="color: blue">o</span><span style="color: indigo">r</span><span style="color: purple">t</span></div>
+        <div class="title in-game">Color Sort</div>
         <audio src="zen-cascade-by-top-flow.mp3" controls autoplay loop id="audio"></audio>
         <div class="audio-credit">music thanks to <a href="https://top-flow.bandcamp.com/">Top Flow</a></div>
         <div class="difficulty-section between-games" style="display: none;">
-        <label for="difficulty">Squinting</label>
-        <input type="range" min="0" max="10" value="1" list="tickmarks" class="difficulty" id="difficulty"/>
-        <datalist id="tickmarks">
-            <option value="0"></option>
-            <option value="1"></option>
-            <option value="2"></option>
-            <option value="3"></option>
-            <option value="4"></option>
-            <option value="5"></option>
-            <option value="6"></option>
-            <option value="7"></option>
-            <option value="8"></option>
-            <option value="9"></option>
-            <option value="10"></option>
-        </datalist>
+            <label for="difficulty">Squinting</label>
+            <input type="range" min="0" max="10" value="1" list="tickmarks" id="difficulty"/>
+            <datalist id="tickmarks">
+                <option value="0"></option>
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+                <option value="5"></option>
+            </datalist>
+        </div>
+        <div class="number-section between-games">
+            <label for="number">48</label>
+            <input type="range" min="0" max="7" value="2" list="number-ticks" id="number"/>
+            <datalist id="number-ticks">
+                <option value="0" data-number="12"></option>
+                <option value="1" data-number="24"></option>
+                <option value="2" data-number="48"></option>
+                <option value="3" data-number="100"></option>
+                <option value="4" data-number="150"></option>
+                <option value="5" data-number="200"></option>
+                <option value="6" data-number="300"></option>
+                <option value="7" data-number="500"></option>
+            </datalist>
         </div>
         
-        <input type="button" value="Start a game" class="button start between-games"/>
+        <input type="button" value="Start a game" class="button start between-games pulse"/>
         <input type="button" value="I'm done" style="display: none;" class="button done in-game"/>
     </div>
 

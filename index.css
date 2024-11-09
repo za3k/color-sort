@@ -13,13 +13,13 @@ html, body {
     position: relative;
 }
 
-.title, .audio-credit, .difficulty-section, input[type=button] {
+.title, .audio-credit, .difficulty-section, .number-section, input[type=button] {
     width: 100%;
     text-align: center;
 }
 
 .title {
-    font-size: 16pt;
+    font-size: 24pt;
     font-variant: small-caps;
     margin: 2rem 0;
 }
@@ -72,6 +72,19 @@ input[type=button] {
 .quadrant.bottom {
     bottom: 0;
     border-top-width: var(--border-width);
+}
+
+.difficulty-section {
+    margin-bottom: 2rem;
+    display: none !IMPORTANT;
+}
+
+.number-section {
+    margin-bottom: 2rem;
+}
+label[for=number] {
+    display: inline-block;
+    width: 4rem;
 }
 
 .bit {
