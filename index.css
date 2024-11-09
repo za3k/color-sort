@@ -6,10 +6,10 @@ html, body {
 }
 
 .right-sidebar {
-    width: 300px;
+    max-width: 300px;
     padding: 2rem;
     flex: 0;
-    border: 1px solid;
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
     position: relative;
 }
 
@@ -85,6 +85,21 @@ input[type=button] {
 label[for=number] {
     display: inline-block;
     width: 4rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px dashed lightgrey;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 11pt;
+}
+.footer 
+.footer a, .footer a:visited {
+    color: black;
 }
 
 .bit {
