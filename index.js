@@ -40,8 +40,6 @@ function sortKeysByValue(d) {
 function okayColor(color) {
     if (color.l < 20) return false // Not too dark
     if (color.l > 95) return false // Not too light
-
-    if (color.l < 90 && color.l > 30) return false // Pressure test
     return true
 }
 
