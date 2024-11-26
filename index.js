@@ -239,6 +239,7 @@ function startDrag(e) {
         // Show drag
         movePiece(piece, place)
         ongoingTouches = e.touches
+        e.preventDefault()
     })
 
     $(window).on("mouseup touchend touchcancel", (e) => {
