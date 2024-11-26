@@ -153,7 +153,7 @@ function generatePiece(data, place) {
     piece.data("group", data.group)
     $(".bits").append(piece)
     movePiece(piece, place)
-    piece.on("mousedown", startDrag)
+    piece.on("mousedown touchstart", startDrag)
     return piece
 }
 
@@ -217,30 +217,35 @@ function startDrag(e) {
     const piece = $(e.target)
     piece.addClass("dragged")
 
-    const offset = { x: e.offsetX + 3, y: e.offsetY + 3 } // 3 is the border width
+    var offset, ongoingTouches
+    if (e.touches) {
+        offset = { x: e.touches[0].pageX - piece.offset().left + 3, y: e.touches[0].pageY - piece.offset().top + 3 } // 3 is the border width
+        ongoingTouches = e.touches
+    } else
+        offset = { x: e.offsetX + 3, y: e.offsetY + 3 } // 3 is the border width
     e.preventDefault()
 
     function dragLocation(e) {
+        if (e.type == "touchend") e = ongoingTouches[0]
+        else if (e.touches) e = e.touches[0]
         return {
             x: e.clientX - offset.x,
             y: e.clientY - offset.y
         }
     }
 
-    $(window).on("mousemove", (e) => {
+    $(window).on("mousemove touchmove", (e) => {
         place = dragLocation(e)
         // Show drag
-        //console.log("mousemove", e, place)
         movePiece(piece, place)
+        ongoingTouches = e.touches
     })
 
-    $(window).on("mouseup", (e) => {
-        //console.log("mouseup", e)
+    $(window).on("mouseup touchend touchcancel", (e) => {
         place = dragLocation(e)
 
         piece.removeClass("dragged")
-        $(window).off("mouseup")
-        $(window).off("mousemove")
+        $(window).off("mouseup mousemove touchmove touchend")
 
         // End drag
         movePiece(piece, place)

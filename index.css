@@ -26,24 +26,17 @@ html, body {
 
 .audio-credit {
     font-size: 8pt;
-    margin-bottom: 2rem;
+    margin-bottom: min(2rem, 3vh);
 }
 
 input[type=button] {
     height: 3rem;
 }
 
-.button.done {
-    position: absolute;
-    bottom: 2rem;
-    right: 5rem;
-    left: 5rem;
-    width: auto;
-}
-
 .game {
     flex: 1;
     position: relative;
+    overflow: hidden;
 }
 
 .quadrant {
@@ -80,7 +73,7 @@ input[type=button] {
 }
 
 .number-section {
-    margin-bottom: 2rem;
+    margin-bottom: min(2rem, 5vh);
 }
 label[for=number] {
     display: inline-block;
@@ -103,10 +96,37 @@ label[for=number] {
 }
 
 .bit {
-    width: 50px;
-    height: 50px;
+    width: min(50px, 10vw, 10vh);
+    height: min(50px, 10vw, 10vh);
     border-radius: 5px;
     position: absolute;
     border: 3px solid;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 900px) {
+    audio {
+        display: none;
+    }
+    .footer {
+        position: relative;
+        font-size: smaller;
+    }
+
+    .title {
+        margin: 0;
+    }
+}
+@media screen and (max-width: 900px) and (orientation: portrait) {
+    body {
+        flex-direction: column;
+    }
+    .right-sidebar {
+        width: auto;
+        max-width: inherit;
+        border-top: 1px solid lightgrey;
+        padding: 1rem;
+    }
+}
+
+
