@@ -1,12 +1,9 @@
-html {
-    overscroll-behavior: none;
-}
-
 html, body {
     width: 100%;
     height: 100%;
     margin: 0;
     display: flex;
+    overscroll-behavior: none; /* Prevent pull-to-refresh */
 }
 
 .right-sidebar {
