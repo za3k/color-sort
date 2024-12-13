@@ -278,6 +278,12 @@ function gameOver() {
     $(".in-game").hide()
 }
 
+function playSound(filename, volume) {
+    const audio = new Audio(filename)
+    if (volume) audio.volume = volume
+    audio.play()
+}
+
 function animateMove(piece, quad, durationMs) {
     const target = {
         x: quad.position().left + randFloat(0, quad.width()-PIECE_SIZE),
@@ -287,6 +293,12 @@ function animateMove(piece, quad, durationMs) {
     piece.animate({
         top: target.y,
         left: target.x
+    }, durationMs)
+}
+function animateCorrect(piece, durationMs) {
+    piece.css("animation", "pulse-animation 2s infinite")
+    setTimeout(() => {
+        piece.css("animation", "")
     }, durationMs)
 }
 
@@ -316,13 +328,22 @@ function donePressed() {
     quad2group[-1] = -1
     const group2quad = invertDict(quad2group)
 
+    var allCorrect = true
     for (piece of pieces) {
         if (piece.group != quad2group[piece.quadrant]) {
             animateMove(piece.e, quadrants[group2quad[piece.group]], ANIMATION_TIME)
+            allCorrect = false
+        } else {
+            animateCorrect(piece.e, ANIMATION_TIME)
         }
     }
 
-    setTimeout(gameOver, ANIMATION_TIME)
+    if (allCorrect) {
+        playSound("wind-chime.mp3", 0.3)
+        setTimeout(gameOver, ANIMATION_TIME)
+    } else {
+        setTimeout(gameOver, ANIMATION_TIME)
+    }
 }
 
 function getNumber() {
